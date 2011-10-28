@@ -2,7 +2,7 @@ module Pjax
   extend ActiveSupport::Concern
   
   included do
-    layout ->(c) { pjax_request? ? false : 'application' }
+    layout ->(c) { pjax_request? ? false : layout_by_resource } # layout_by_resource loads the proper layout (devise or application)
     helper_method :pjax_request?
   end
   
